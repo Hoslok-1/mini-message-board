@@ -7,8 +7,11 @@ router.get('/',(req,res) => {
 })
 
 router.get('/new',(req,res) => {
-    res.send("User New Form")
+    res.render('form',{text:"wow"})
 })
 
+router.post('/new',(req,res) =>{
+    
+})
 
 module.exports = router

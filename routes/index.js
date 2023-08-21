@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+
+
 const messages = [
     {
       text: "Hi there!",
@@ -16,12 +18,21 @@ const messages = [
 
 
 router.get('/',(req,res) => { 
-    res.render('index',{title:'mini message board',messages:messages})
+    res.render('index',{title:'Mini Message Board',messages:messages})
 })
 
 router.post('/',(req,res) => {
   console.log(req.body);
   res.send(201);
+})
+
+router.get('/new',(req,res)=>{
+  res.render('form');
+})
+
+router.post('/new',(req,res)=>{
+  messages.push({text:req.body.userText,user:req.body.userName,added:new Date()})
+  res.redirect('/')
 })
 
 module.exports = router
